@@ -1,0 +1,16 @@
+//
+//  Localizable.swift
+//  WeatherOK
+//
+//  Created by MAC on 30.03.2023.
+//
+
+"waitLocation" = "Оберіть локацію";
+"myLoc" = "Моє місце";
+"forCity" = "За містом";
+"cityName" = "Введіть назву міста...";
+"min" = "мін:";
+"max" = "макс:";
+"wind" = "Вітер:";
+"speed" = "км/год";
+"now" = "Зараз";

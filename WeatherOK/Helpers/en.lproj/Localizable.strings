@@ -1,0 +1,16 @@
+//
+//  Localizable.swift
+//  WeatherOK
+//
+//  Created by MAC on 30.03.2023.
+//
+
+"waitLocation" = "Waiting for location";
+"myLoc" = "My location";
+"forCity" = "For city";
+"cityName" = "Input city...";
+"min" = "min:";
+"max" = "max:";
+"wind" = "Wind:";
+"speed" = "kph";
+"now" = "Now";
