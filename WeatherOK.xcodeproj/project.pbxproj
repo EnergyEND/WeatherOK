@@ -7,22 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0421A81729C86AC900DE718A /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = 0421A81929C86AC900DE718A /* Localizable.strings */; };
+		042B51C129CC60FE00263FD5 /* LocaleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B51C029CC60FE00263FD5 /* LocaleModifier.swift */; };
 		04667CAE29C1D14D0086FC3E /* WeatherOKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04667CAD29C1D14D0086FC3E /* WeatherOKApp.swift */; };
 		04667CB029C1D14D0086FC3E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04667CAF29C1D14D0086FC3E /* ContentView.swift */; };
 		04667CB229C1D14E0086FC3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04667CB129C1D14E0086FC3E /* Assets.xcassets */; };
 		04667CB529C1D14E0086FC3E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04667CB429C1D14E0086FC3E /* Preview Assets.xcassets */; };
-		04667CB729C1D14E0086FC3E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04667CB629C1D14E0086FC3E /* Persistence.swift */; };
-		04667CBA29C1D14E0086FC3E /* WeatherOK.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04667CB829C1D14E0086FC3E /* WeatherOK.xcdatamodeld */; };
+		04667CC329C1D3190086FC3E /* GetLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04667CC229C1D3190086FC3E /* GetLocation.swift */; };
+		04667CC529C1D3D90086FC3E /* GetWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04667CC429C1D3D90086FC3E /* GetWeatherModel.swift */; };
+		046BC23A29C48C4300EF8431 /* ResultWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BC23929C48C4300EF8431 /* ResultWeatherView.swift */; };
+		046E50E429C715D6004C9656 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E50E329C715D6004C9656 /* LogoView.swift */; };
+		046E50E629C71BA4004C9656 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E50E529C71BA4004C9656 /* KeyboardObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0421A81829C86AC900DE718A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0421A81A29C86AD300DE718A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		042B51C029CC60FE00263FD5 /* LocaleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleModifier.swift; sourceTree = "<group>"; };
 		04667CAA29C1D14D0086FC3E /* WeatherOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04667CAD29C1D14D0086FC3E /* WeatherOKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOKApp.swift; sourceTree = "<group>"; };
 		04667CAF29C1D14D0086FC3E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		04667CB129C1D14E0086FC3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04667CB429C1D14E0086FC3E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		04667CB629C1D14E0086FC3E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		04667CB929C1D14E0086FC3E /* WeatherOK.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherOK.xcdatamodel; sourceTree = "<group>"; };
+		04667CC229C1D3190086FC3E /* GetLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocation.swift; sourceTree = "<group>"; };
+		04667CC429C1D3D90086FC3E /* GetWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeatherModel.swift; sourceTree = "<group>"; };
+		046BC23929C48C4300EF8431 /* ResultWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWeatherView.swift; sourceTree = "<group>"; };
+		046E50E329C715D6004C9656 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		046E50E529C71BA4004C9656 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +47,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042B51C329CC614D00263FD5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				04667CC429C1D3D90086FC3E /* GetWeatherModel.swift */,
+				04667CC229C1D3190086FC3E /* GetLocation.swift */,
+				046E50E529C71BA4004C9656 /* KeyboardObserver.swift */,
+				042B51C029CC60FE00263FD5 /* LocaleModifier.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		04667CA129C1D14D0086FC3E = {
 			isa = PBXGroup;
 			children = (
@@ -57,9 +79,11 @@
 			children = (
 				04667CAD29C1D14D0086FC3E /* WeatherOKApp.swift */,
 				04667CAF29C1D14D0086FC3E /* ContentView.swift */,
+				046E50E329C715D6004C9656 /* LogoView.swift */,
+				046BC23929C48C4300EF8431 /* ResultWeatherView.swift */,
+				042B51C329CC614D00263FD5 /* Helpers */,
 				04667CB129C1D14E0086FC3E /* Assets.xcassets */,
-				04667CB629C1D14E0086FC3E /* Persistence.swift */,
-				04667CB829C1D14E0086FC3E /* WeatherOK.xcdatamodeld */,
+				0421A81929C86AC900DE718A /* Localizable.strings */,
 				04667CB329C1D14E0086FC3E /* Preview Content */,
 			);
 			path = WeatherOK;
@@ -115,6 +139,7 @@
 			knownRegions = (
 				en,
 				Base,
+				uk,
 			);
 			mainGroup = 04667CA129C1D14D0086FC3E;
 			productRefGroup = 04667CAB29C1D14D0086FC3E /* Products */;
@@ -143,14 +168,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04667CBA29C1D14E0086FC3E /* WeatherOK.xcdatamodeld in Sources */,
-				04667CB729C1D14E0086FC3E /* Persistence.swift in Sources */,
 				04667CB029C1D14D0086FC3E /* ContentView.swift in Sources */,
+				042B51C129CC60FE00263FD5 /* LocaleModifier.swift in Sources */,
+				046E50E429C715D6004C9656 /* LogoView.swift in Sources */,
+				046E50E629C71BA4004C9656 /* KeyboardObserver.swift in Sources */,
+				04667CC529C1D3D90086FC3E /* GetWeatherModel.swift in Sources */,
 				04667CAE29C1D14D0086FC3E /* WeatherOKApp.swift in Sources */,
+				046BC23A29C48C4300EF8431 /* ResultWeatherView.swift in Sources */,
+				0421A81729C86AC900DE718A /* Localizable.strings in Sources */,
+				04667CC329C1D3190086FC3E /* GetLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0421A81929C86AC900DE718A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0421A81829C86AC900DE718A /* en */,
+				0421A81A29C86AD300DE718A /* uk */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		04667CBB29C1D14E0086FC3E /* Debug */ = {
@@ -278,6 +320,8 @@
 				DEVELOPMENT_TEAM = 4395FH4L77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use for show wheather in your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -307,6 +351,8 @@
 				DEVELOPMENT_TEAM = 4395FH4L77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use for show wheather in your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -347,19 +393,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		04667CB829C1D14E0086FC3E /* WeatherOK.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				04667CB929C1D14E0086FC3E /* WeatherOK.xcdatamodel */,
-			);
-			currentVersion = 04667CB929C1D14E0086FC3E /* WeatherOK.xcdatamodel */;
-			path = WeatherOK.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 04667CA229C1D14D0086FC3E /* Project object */;
 }
