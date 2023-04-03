@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0421A81729C86AC900DE718A /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = 0421A81929C86AC900DE718A /* Localizable.strings */; };
+		04194FD129D59B8900C757B2 /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = 04194FD329D59B8900C757B2 /* Localizable.strings */; };
 		042B51C129CC60FE00263FD5 /* LocaleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B51C029CC60FE00263FD5 /* LocaleModifier.swift */; };
 		04667CAE29C1D14D0086FC3E /* WeatherOKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04667CAD29C1D14D0086FC3E /* WeatherOKApp.swift */; };
 		04667CB029C1D14D0086FC3E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04667CAF29C1D14D0086FC3E /* ContentView.swift */; };
@@ -21,8 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0421A81829C86AC900DE718A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0421A81A29C86AD300DE718A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		04194FD229D59B8900C757B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		04194FD429D59B8D00C757B2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		042B51C029CC60FE00263FD5 /* LocaleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleModifier.swift; sourceTree = "<group>"; };
 		04667CAA29C1D14D0086FC3E /* WeatherOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04667CAD29C1D14D0086FC3E /* WeatherOKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOKApp.swift; sourceTree = "<group>"; };
@@ -54,6 +54,7 @@
 				04667CC229C1D3190086FC3E /* GetLocation.swift */,
 				046E50E529C71BA4004C9656 /* KeyboardObserver.swift */,
 				042B51C029CC60FE00263FD5 /* LocaleModifier.swift */,
+				04194FD329D59B8900C757B2 /* Localizable.strings */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -83,7 +84,6 @@
 				046BC23929C48C4300EF8431 /* ResultWeatherView.swift */,
 				042B51C329CC614D00263FD5 /* Helpers */,
 				04667CB129C1D14E0086FC3E /* Assets.xcassets */,
-				0421A81929C86AC900DE718A /* Localizable.strings */,
 				04667CB329C1D14E0086FC3E /* Preview Content */,
 			);
 			path = WeatherOK;
@@ -175,7 +175,7 @@
 				04667CC529C1D3D90086FC3E /* GetWeatherModel.swift in Sources */,
 				04667CAE29C1D14D0086FC3E /* WeatherOKApp.swift in Sources */,
 				046BC23A29C48C4300EF8431 /* ResultWeatherView.swift in Sources */,
-				0421A81729C86AC900DE718A /* Localizable.strings in Sources */,
+				04194FD129D59B8900C757B2 /* Localizable.strings in Sources */,
 				04667CC329C1D3190086FC3E /* GetLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,11 +183,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0421A81929C86AC900DE718A /* Localizable.strings */ = {
+		04194FD329D59B8900C757B2 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0421A81829C86AC900DE718A /* en */,
-				0421A81A29C86AD300DE718A /* uk */,
+				04194FD229D59B8900C757B2 /* en */,
+				04194FD429D59B8D00C757B2 /* uk */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

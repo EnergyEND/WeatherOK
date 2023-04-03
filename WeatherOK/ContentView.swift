@@ -12,50 +12,145 @@ import CoreHaptics
 
 struct ContentView: View {
     
-    @Environment(\.colorScheme) var colorScheme
-    @AppStorage("selectedLocale") var selectedLocale = false
+    @Environment(\.colorScheme) var colorScheme     //UI theme observer
+    @AppStorage("selectedLocale") var selectedLocale = false  //Saved localization in UD
         
 
-    let locationFetcher = LocationFetcher()
-    @State private var engine: CHHapticEngine?
-    @State private var userLocation = LocationFetcher().lastKnownLocation
-    @State private var inputCity = String()
-    @State private var isCity = false
-    @State private var height : CGFloat = 130
-    @State private var result: ResultData?
-    @State private var hourly: HourlyWeather?
-    @ObservedObject private var observer = KeyboardObserver()
+    let locationFetcher = LocationFetcher()     //Location engine
+    @State private var engine: CHHapticEngine?  //Vibro engine
+    @State private var userLocation = LocationFetcher().lastKnownLocation   //User location coord's
+    @State private var inputCity = String()     //City for fetching data
+    @State private var isCity = false           //Fetching toggle
+    @State private var height : CGFloat = 130   //Bottom rectangle animation
+    @State private var result: CurrentData?    //Current weather data
+    @State private var hourly: HourlyWeather?    //Hourly weather data
+    @ObservedObject private var observer = KeyboardObserver()   //Keyboard status observer
 
     var body: some View {
         NavigationStack {
-            ZStack {
-                
-                if colorScheme == .light {
-                    Rectangle().fill(Color.blue.gradient).ignoresSafeArea()
-                }else {
-                    Rectangle().fill(Color("DarkBack").gradient).ignoresSafeArea()
-                }
-                
-                Rectangle().fill(.ultraThickMaterial).cornerRadius(25).offset(y: 350)
-                    .frame(height: height)
-                
-                
-                VStack {
+            GeometryReader { reader in
+                ZStack {
                     
-                    HStack {
-                        Button{
-                            
-                            if let location = locationFetcher.lastKnownLocation {
-                                print("User location is \(location)")
-                                userLocation = location
+                    //MARK: Main background style:
+                    if colorScheme == .light {
+                        Rectangle().fill(Color.blue.gradient).ignoresSafeArea()
+                    }else {
+                        Rectangle().fill(Color("DarkBack").gradient).ignoresSafeArea()
+                    }
+                    
+                    Rectangle().fill(.ultraThickMaterial).cornerRadius(25).offset(y: reader.size.height * 0.47)
+                        .frame(height: height)
+                    
+                    
+                    
+                    //MARK: Bottom buttons block:
+                    VStack {
+                        HStack {
+                            //MARK: User location button:
+                            Button{
+                                
+                                if let location = locationFetcher.lastKnownLocation {
+                                    print("User location is \(location)")
+                                    userLocation = location
+                                }
+                                
+                                guard let userLocation = userLocation else{
+                                    print("Location is nil")
+                                    return
+                                }
+                                
+                                getWeatherFromAPI(lat: userLocation.latitude, long: userLocation.longitude,isUkr: selectedLocale, isCity: false) { result in
+                                    switch result {
+                                    case .success(let result):
+                                        self.result = result
+                                    case .failure(let error):
+                                        print("Error: \(error.localizedDescription)")
+                                    }
+                                }
+                                getHourlyWeather(for: result?.name ?? "Kyiv",isUkr: selectedLocale) { result in
+                                    switch result {
+                                    case .success(let result):
+                                        self.hourly = result
+                                    case .failure(let error):
+                                        print("Error: \(error.localizedDescription)")
+                                    }
+                                }
+                                simpleSuccess()
+                            } label: {
+                                ZStack {
+                                    Rectangle().frame(width: reader.size.width * 0.45, height: 50).cornerRadius(15).foregroundColor(Color("ButtonBack"))
+                                    HStack {
+                                        Image(systemName: "location.fill")
+                                            .foregroundColor(Color("ButtonText"))
+                                            .font(.system(size: 20))
+                                        Text("myLoc")
+                                            .foregroundColor(Color("ButtonText"))
+                                            .font(.system(size: 23))
+                                    }
+                                }
                             }
                             
-                            guard let userLocation = userLocation else{
-                                print("Location is nil")
-                                return
+                            //MARK: City button:
+                            Button {
+                                withAnimation {
+                                    if isCity {
+                                        height = reader.size.height * 0.165 //130
+                                        isCity = false
+                                    }else {
+                                        height = reader.size.height * 0.3 //200
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                            isCity = true
+                                        }
+                                    }
+                                }
+
+                            } label: {
+                                ZStack {
+                                    Rectangle().frame(width: reader.size.width * 0.45, height: 50).cornerRadius(15).foregroundColor(Color("ButtonBack"))
+                                    HStack {
+                                        Text("forCity")
+                                            .foregroundColor(Color("ButtonText"))
+                                            .font(.system(size: 23))
+                                        Image(systemName: "location.magnifyingglass")
+                                            .foregroundColor(Color("ButtonText"))
+                                            .font(.system(size: 20))
+                                    }.offset(x: 10)
+                                }
                             }
+                        }
+                    }.offset(y: reader.size.height * 0.44)
+                    
+                    
+                    
+                    //MARK: Main info block:
+                    VStack {
+                        if result != nil {
                             
-                            getWeatherFromAPI(lat: userLocation.latitude, long: userLocation.longitude,isUkr: selectedLocale, isCity: false) { result in
+                            //MARK: Fetched data block:
+                            withAnimation {
+                                ZStack {
+                                    LogoView().scaleEffect(0.4).offset(x: -reader.size.width * 0.345 ,y: -reader.size.height * 0.44) // -135  -330
+                                    VStack{
+                                        ResultWeatherView(location: $result)
+                                            .frame(width: reader.size.width * 0.9, height: reader.size.height * 0.5)
+                                        HourlyView(hours: $hourly, width: reader.size.width * 0.9, height: reader.size.height * 0.15)
+                                            .opacity(observer.textOpacity)
+                                            .padding(.top, 5)
+                                    }.offset(y: -reader.size.height * 0.03)
+                                        
+                                }
+                            }
+                        } else {
+                            LogoView().shadow(radius: 45)
+                        }
+                    }
+                    
+                    
+                    //MARK: Data input block:
+                    if isCity {
+                        //City name textfield
+                        TextField("cityName", text: $inputCity, onCommit: {
+                            getWeatherFromAPI(for: inputCity.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "Kyiv",isUkr: selectedLocale, isCity: true) { result in
                                 switch result {
                                 case .success(let result):
                                     self.result = result
@@ -63,7 +158,7 @@ struct ContentView: View {
                                     print("Error: \(error.localizedDescription)")
                                 }
                             }
-                            getHourlyWeather(for: result?.name ?? "Kyiv",isUkr: selectedLocale) { result in
+                            getHourlyWeather(for: inputCity.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "Kyiv",isUkr: selectedLocale) { result in
                                 switch result {
                                 case .success(let result):
                                     self.hourly = result
@@ -72,114 +167,40 @@ struct ContentView: View {
                                 }
                             }
                             simpleSuccess()
-                        } label: {
-                            ZStack {
-                                Rectangle().frame(width: 170, height: 50).cornerRadius(15).foregroundColor(Color("ButtonBack"))
-                                HStack {
-                                    Image(systemName: "location.fill")
-                                        .foregroundColor(Color("ButtonText"))
-                                        .font(.system(size: 20))
-                                    Text("myLoc")
-                                        .foregroundColor(Color("ButtonText"))
-                                        .font(.system(size: 23))
-                                }
+                            
+                        })
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .frame(maxWidth: reader.size.width * 0.92)
+                            .offset(y: reader.size.height * (observer.textOffset * 0.0013))
+                            .shadow(radius: observer.textShadow)
+                            .onTapGesture {
+                                inputCity = ""
                             }
-                        }
                         
-                        Button {
-                            withAnimation {
-                                if isCity {
-                                    height = 130
-                                    isCity = false
-                                }else {
-                                    height = 200
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        isCity = true
-                                    }
-                                }
-                            }
-
-                        } label: {
-                            ZStack {
-                                Rectangle().frame(width: 170, height: 50).cornerRadius(15).foregroundColor(Color("ButtonBack"))
-                                HStack {
-                                    Text("forCity")
-                                        .foregroundColor(Color("ButtonText"))
-                                        .font(.system(size: 23))
-                                    Image(systemName: "location.magnifyingglass")
-                                        .foregroundColor(Color("ButtonText"))
-                                        .font(.system(size: 20))
-                                }.offset(x: 10)
-                            }
-                        }
-                    }.padding(.top, 3)
-                }.offset(y: 330)
-                
-                VStack {
-                    if result != nil {
-                        withAnimation {
-                            ZStack {
-                                LogoView().scaleEffect(0.4).offset(x: -135,y: -330)
-                                ResultWeatherView(location: $result)
-                                    .offset(y: -80)
-                                HourlyView(hours: $hourly).offset(y: 185).opacity(observer.textOpacity)
-                            }
-                        }
-                    } else {
-                        LogoView().shadow(radius: 45)
+                    }else if result == nil {
+                        
+                        //Placeholder
+                        Text("waitLocation")
+                            .offset(y: reader.size.height * 0.335)
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
                     }
-                }
-                
-                if isCity {
-                    TextField("cityName", text: $inputCity, onCommit: {
-                        getWeatherFromAPI(for: inputCity.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "Kyiv",isUkr: selectedLocale, isCity: true) { result in
-                            switch result {
-                            case .success(let result):
-                                self.result = result
-                            case .failure(let error):
-                                print("Error: \(error.localizedDescription)")
-                            }
-                        }
-                        getHourlyWeather(for: inputCity.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "Kyiv",isUkr: selectedLocale) { result in
-                            switch result {
-                            case .success(let result):
-                                self.hourly = result
-                            case .failure(let error):
-                                print("Error: \(error.localizedDescription)")
-                            }
-                        }
-                        simpleSuccess()
-                        
-                    })
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
-                        .offset(y: observer.textOffset)
-                        .shadow(radius: observer.textShadow)
-                        .onTapGesture {
-                            inputCity = ""
-                        }
                     
-                }else if result == nil {
+                    //MARK: Localization toggle:
+                    HStack {
+                        Text("🇬🇧")
+                        Toggle("",isOn: $selectedLocale).toggleStyle(SwitchToggleStyle(tint: .yellow)).labelsHidden()
+                        Text("🇺🇦")
+                    }.frame(width: 120, height: 40 )
+                        .background(.thinMaterial)
+                        .cornerRadius(25)
+                        .offset(x: reader.size.width * 0.31, y: -reader.size.height * 0.465)
                     
-                    Text("waitLocation")
-                        .offset(y: 250)
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
                 }
-                
-                HStack {
-                    Text("🇬🇧")
-                    Toggle("",isOn: $selectedLocale).toggleStyle(SwitchToggleStyle(tint: .yellow)).labelsHidden()
-                    Text("🇺🇦")
-                }.frame(width: 120, height: 40 )
-                    .background(.thinMaterial)
-                    .cornerRadius(25)
-                    .offset(x: 120, y: -330)
-                
-            }.modifier(LocalizedViewModifier(locale: selectedLocale ? Locale(identifier: "uk_UA") : Locale(identifier: "en_US")))
+            }
             
-            
-        }.onAppear{
+        }.modifier(LocalizedViewModifier(locale: selectedLocale ? Locale(identifier: "uk_UA") : Locale(identifier: "en_US")))
+        .onAppear{
             locationFetcher.start()
             prepareHaptics()
         }
@@ -188,7 +209,7 @@ struct ContentView: View {
     
     
     
-    
+    //MARK: Vibro config:
     func prepareHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
 

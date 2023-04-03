@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//MARK: App logo style view:
 struct LogoView: View {
     var body: some View {
         
@@ -26,10 +27,4 @@ struct LogoView: View {
         .cornerRadius(15)
     }
     
-}
-
-struct LogoView_Previews: PreviewProvider {
-    static var previews: some View {
-        LogoView()
-    }
 }

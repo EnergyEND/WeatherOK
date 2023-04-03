@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: Temprature model:
 struct Temp: Codable {
     let temp: Float
     let feels_like: Float
@@ -21,6 +22,7 @@ struct Temp: Codable {
     }
 }
 
+//MARK: Weather info model:
 struct Weather: Codable {
     let id: Int
     let main: String
@@ -35,6 +37,7 @@ struct Weather: Codable {
     }
 }
 
+//MARK: Wind info model:
 struct Wind: Codable {
     let speed: Double
     
@@ -43,13 +46,15 @@ struct Wind: Codable {
     }
 }
 
-struct ResultData: Codable {
+//MARK: Current weather data model:
+struct CurrentData: Codable {
     let weather: [Weather]
     let main: Temp
     let wind: Wind
     let name: String
 }
 
+//MARK: Hourly weather data model:
 struct HourlyData: Codable, Equatable {
     let dt: Int
     let weather: [Weather]
@@ -66,14 +71,16 @@ struct HourlyData: Codable, Equatable {
         }
 }
 
+//MARK: Hourly weather data list:
 struct HourlyWeather: Codable{
     let list: [HourlyData]
 }
 
+//MARK: Current localization observer:
 let currentLocale = Locale.current.language.languageCode?.identifier
 
-
-func getWeatherFromAPI(for city: String = "Kyiv", lat: Double = 34.500831, long: Double = -117.185876, isUkr: Bool, isCity: Bool, completion: @escaping (Result<ResultData, Error>) -> Void) {
+//MARK: Current weather fetcher:
+func getWeatherFromAPI(for city: String = "Kyiv", lat: Double = 34.500831, long: Double = -117.185876, isUkr: Bool, isCity: Bool, completion: @escaping (Result<CurrentData, Error>) -> Void) {
     
     let loc = isUkr ? "uk" : "en"
     
@@ -90,7 +97,7 @@ func getWeatherFromAPI(for city: String = "Kyiv", lat: Double = 34.500831, long:
         }
         
         do {
-            let result = try JSONDecoder().decode(ResultData.self, from: data)
+            let result = try JSONDecoder().decode(CurrentData.self, from: data)
             completion(.success(result))
             print(cityUrl)
         } catch {
@@ -99,7 +106,7 @@ func getWeatherFromAPI(for city: String = "Kyiv", lat: Double = 34.500831, long:
     }.resume()
 }
 
-
+//MARK: Hourly weather fetcher:
 func getHourlyWeather(for city: String = "Kyiv",isUkr: Bool, completion: @escaping (Result<HourlyWeather, Error>) -> Void) {
     let api = "039b8b1c421027d76a3214ab43c2560f"
     let loc = isUkr ? "uk" : "en"

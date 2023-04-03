@@ -7,17 +7,25 @@
 
 import SwiftUI
 
+//MARK: Currunt weather block
 struct ResultWeatherView: View {
     
-    @Binding var location: ResultData?
+    @Binding var location: CurrentData?  //Fetched data
     
     var body: some View {
         ZStack {
-            Rectangle().fill(.thinMaterial).frame(maxWidth: 360, maxHeight: 400).cornerRadius(10)
+            //Background style:
+            Rectangle().fill(.thinMaterial).cornerRadius(10)
+            
+            
             VStack {
-                
                 VStack {
+                    
+                    //Location name:
                     Text(location!.name).font(.system(size: 55))
+                    
+                    
+                    //Temprature block:
                     VStack {
                         Text("\(String(format: "%01.1f", location!.main.temp)) °C").font(.system(size: 35))
                         HStack {
@@ -29,6 +37,8 @@ struct ResultWeatherView: View {
                         }.font(.system(size: 20))
                     }.padding(.top, 1)
                     
+                    
+                    //Weather info block:
                     HStack {
                         Text("\(location!.weather.first!.description.capitalized)")
                         AsyncImage(url: URL(string: "https://openweathermap.org/img/w/\(location!.weather.first!.icon).png")) { image in
@@ -40,6 +50,9 @@ struct ResultWeatherView: View {
                         }
                     }.font(.system(size: 35))
                         .padding(.top, 10)
+                    
+                    
+                    //Wind info block:
                     HStack {
                         Text("wind")
                         Text("\(String(format: "%01.1f",location!.wind.speed))")
@@ -52,19 +65,27 @@ struct ResultWeatherView: View {
     }
 }
 
+//MARK: Hourly weather block
 struct HourlyView: View {
     
-    @Binding var hours: HourlyWeather?
-    
+    @Binding var hours: HourlyWeather?      //Fetched data
+    var width: CGFloat      //GR width
+    var height: CGFloat     //GR height
     var body: some View {
         ZStack {
+            //Background style:
             Rectangle().fill(.thinMaterial).cornerRadius(10)
+            
+            //Horizontal scroll block:
             ScrollView(.horizontal) {
                 if hours != nil {
                     HStack {
                         ForEach(hours!.list, id: \.dt) { hour in
+                            
+                            //Style for all fetched elements:
                             VStack {
                                 
+                                //Time
                                 if hour == hours?.list.first {
                                     Text("now").font(.system(size: 13))
                                         .italic()
@@ -74,6 +95,7 @@ struct HourlyView: View {
                                         .italic()
                                 }
                                 
+                                //Weather image
                                 AsyncImage(url: URL(string: "https://openweathermap.org/img/w/\(hour.weather.first!.icon).png")) { image in
                                     image
                                         .resizable()
@@ -82,6 +104,7 @@ struct HourlyView: View {
                                     ProgressView()
                                 }.padding(.top, -15)
                                 
+                                //Tempreture
                                 Text("\(String(format: "%01.0f", hour.main.temp))°")
                                     .padding(.top, -15)
                                     .font(.system(size: 20))
@@ -91,12 +114,13 @@ struct HourlyView: View {
                         }
                     }
                 }
-            }.frame(maxWidth: 360, maxHeight: 60)
+            }.frame(maxWidth: width, maxHeight: height * 0.6)
                 .scrollIndicators(.hidden)
-        }.frame(width: 360, height: 100)
+        }.frame(width: width, height: height)
     }
 }
 
+//MARK: Custom date formatter:
 func timeFormatter(dateString: String) -> String {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
