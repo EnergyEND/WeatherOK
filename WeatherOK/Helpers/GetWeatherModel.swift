@@ -99,7 +99,7 @@ func getWeatherFromAPI(for city: String = "Kyiv", lat: Double = 34.500831, long:
         do {
             let result = try JSONDecoder().decode(CurrentData.self, from: data)
             completion(.success(result))
-            print(cityUrl)
+            print(isCity ? cityUrl : coordUrl)
         } catch {
             completion(.failure(error))
         }

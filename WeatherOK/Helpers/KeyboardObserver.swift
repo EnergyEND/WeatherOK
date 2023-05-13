@@ -15,6 +15,7 @@ class KeyboardObserver: ObservableObject {
     @Published var textOffset : CGFloat = 275
     @Published var textShadow : CGFloat = 0
     @Published var textOpacity : CGFloat = 1
+    @Published var textFieldIsPressed = false
 
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -28,14 +29,16 @@ class KeyboardObserver: ObservableObject {
 
     @objc func keyboardWillShow(notification: Notification) {
         guard notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] is CGRect else { return }
-        textOffset = 160
+        textOffset = 250 //160
         textShadow = 30
         textOpacity = 0
+        textFieldIsPressed = true
     }
 
     @objc func keyboardWillHide(notification: Notification) {
         textOffset = 275
         textShadow = 0
         textOpacity = 1
+        textFieldIsPressed = false
     }
 }

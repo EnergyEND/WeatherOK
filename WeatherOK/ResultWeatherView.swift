@@ -10,32 +10,50 @@ import SwiftUI
 //MARK: Currunt weather block
 struct ResultWeatherView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @Binding var location: CurrentData?  //Fetched data
+    @State var tempColor: Color = .white
     
     var body: some View {
         ZStack {
             //Background style:
             Rectangle().fill(.thinMaterial).cornerRadius(10)
             
-            
             VStack {
                 VStack {
                     
                     //Location name:
-                    Text(location!.name).font(.system(size: 55))
+                    HStack {
+                        Image(colorScheme == .dark ? "locationPointLight" : "locationPointDark").resizable()
+                            .frame(width: 30, height: 40)
+                        Text(location!.name).font(.system(size: 55))
+                    }.onAppear{
+                        tempColor = getTempTextColor()
+                    }
                     
+                    .onChange(of: location!.name) { _ in
+                        tempColor = getTempTextColor()
+                    }
                     
                     //Temprature block:
                     VStack {
-                        Text("\(String(format: "%01.1f", location!.main.temp)) °C").font(.system(size: 35))
+                        HStack {
+                            Text("\(String(format: "%01.0f", location!.main.temp))").foregroundColor(tempColor)
+                            Text("°C")
+                        }.font(.system(size: 35))
+                            .padding(.bottom, 1)
                         HStack {
                             Text("min")
                             Text("\(String(format: "%01.1f", location!.main.temp_min))")
+                            Image(systemName: "arrow.down")
                                 .padding(.trailing, 10)
+                            
                             Text("max")
                             Text("\(String(format: "%01.1f", location!.main.temp_max))")
+                            Image(systemName: "arrow.up")
                         }.font(.system(size: 20))
                     }.padding(.top, 1)
+    
                     
                     
                     //Weather info block:
@@ -57,12 +75,25 @@ struct ResultWeatherView: View {
                         Text("wind")
                         Text("\(String(format: "%01.1f",location!.wind.speed))")
                         Text("speed")
+                        Image(colorScheme == .dark ? "windLight" : "windDark").resizable()
+                            .frame(width: 30, height: 40)
                     }.font(.system(size: 30))
                     
                 }
             }
         }
     }
+    
+    func getTempTextColor() -> Color {
+        switch Int(location!.main.temp) {
+        case -20..<5: return Color("veryColdTemp")
+        case 5..<15: return Color("coldTemp")
+        case 15..<20: return Color("normalTemp")
+        case 20..<30: return Color("hotTemp")
+        default: return .red
+        }
+    }
+    
 }
 
 //MARK: Hourly weather block

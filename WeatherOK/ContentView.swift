@@ -31,22 +31,24 @@ struct ContentView: View {
             GeometryReader { reader in
                 ZStack {
                     
-                    //MARK: Main background style:
+                    //MARK: Background style:
                     if colorScheme == .light {
                         Rectangle().fill(Color.blue.gradient).ignoresSafeArea()
+                        //LottieView(animationName: "lottieAnimation")
                     }else {
                         Rectangle().fill(Color("DarkBack").gradient).ignoresSafeArea()
                     }
                     
-                    Rectangle().fill(.ultraThickMaterial).cornerRadius(25).offset(y: reader.size.height * 0.47)
+                    
+                    //MARK: Location buttons block:
+                    //Background:
+                    Rectangle().fill(.ultraThickMaterial).cornerRadius(25)
+                        .offset(y: reader.size.height * 0.47)
                         .frame(height: height)
                     
-                    
-                    
-                    //MARK: Bottom buttons block:
                     VStack {
                         HStack {
-                            //MARK: User location button:
+                            //User location button:
                             Button{
                                 
                                 if let location = locationFetcher.lastKnownLocation {
@@ -88,9 +90,9 @@ struct ContentView: View {
                                             .font(.system(size: 23))
                                     }
                                 }
-                            }
+                            }.disabled(observer.textFieldIsPressed)
                             
-                            //MARK: City button:
+                            //City button:
                             Button {
                                 withAnimation {
                                     if isCity {
@@ -116,13 +118,13 @@ struct ContentView: View {
                                             .font(.system(size: 20))
                                     }.offset(x: 10)
                                 }
-                            }
+                            }.disabled(observer.textFieldIsPressed)
                         }
-                    }.offset(y: reader.size.height * 0.44)
+                     }.offset(y: reader.size.height * 0.44)
                     
                     
                     
-                    //MARK: Main info block:
+                    //MARK: Center info block:
                     VStack {
                         if result != nil {
                             
@@ -133,6 +135,7 @@ struct ContentView: View {
                                     VStack{
                                         ResultWeatherView(location: $result)
                                             .frame(width: reader.size.width * 0.9, height: reader.size.height * 0.5)
+                                        
                                         HourlyView(hours: $hourly, width: reader.size.width * 0.9, height: reader.size.height * 0.15)
                                             .opacity(observer.textOpacity)
                                             .padding(.top, 5)

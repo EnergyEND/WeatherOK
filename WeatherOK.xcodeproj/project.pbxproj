@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04194FD129D59B8900C757B2 /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = 04194FD329D59B8900C757B2 /* Localizable.strings */; };
 		042B51C129CC60FE00263FD5 /* LocaleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B51C029CC60FE00263FD5 /* LocaleModifier.swift */; };
+		043AB5042A0FA57B009CD8FB /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043AB5032A0FA57A009CD8FB /* LottieView.swift */; };
 		04667CAE29C1D14D0086FC3E /* WeatherOKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04667CAD29C1D14D0086FC3E /* WeatherOKApp.swift */; };
 		04667CB029C1D14D0086FC3E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04667CAF29C1D14D0086FC3E /* ContentView.swift */; };
 		04667CB229C1D14E0086FC3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04667CB129C1D14E0086FC3E /* Assets.xcassets */; };
@@ -18,12 +19,16 @@
 		046BC23A29C48C4300EF8431 /* ResultWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BC23929C48C4300EF8431 /* ResultWeatherView.swift */; };
 		046E50E429C715D6004C9656 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E50E329C715D6004C9656 /* LogoView.swift */; };
 		046E50E629C71BA4004C9656 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E50E529C71BA4004C9656 /* KeyboardObserver.swift */; };
+		04F15E5D2A0F91FC007146DC /* RainBack.json in Resources */ = {isa = PBXBuildFile; fileRef = 04F15E5C2A0F91FC007146DC /* RainBack.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04194FD229D59B8900C757B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04194FD429D59B8D00C757B2 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		04209AD62A067B04008E819C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		042B51C029CC60FE00263FD5 /* LocaleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleModifier.swift; sourceTree = "<group>"; };
+		043AB5032A0FA57A009CD8FB /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		044AC3B32A066DA400F3F452 /* lottieAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lottieAnimation.json; sourceTree = "<group>"; };
 		04667CAA29C1D14D0086FC3E /* WeatherOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04667CAD29C1D14D0086FC3E /* WeatherOKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOKApp.swift; sourceTree = "<group>"; };
 		04667CAF29C1D14D0086FC3E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +39,7 @@
 		046BC23929C48C4300EF8431 /* ResultWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWeatherView.swift; sourceTree = "<group>"; };
 		046E50E329C715D6004C9656 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		046E50E529C71BA4004C9656 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
+		04F15E5C2A0F91FC007146DC /* RainBack.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = RainBack.json; path = ../../../../Downloads/RainBack.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,9 @@
 				04667CC229C1D3190086FC3E /* GetLocation.swift */,
 				046E50E529C71BA4004C9656 /* KeyboardObserver.swift */,
 				042B51C029CC60FE00263FD5 /* LocaleModifier.swift */,
+				043AB5032A0FA57A009CD8FB /* LottieView.swift */,
+				044AC3B32A066DA400F3F452 /* lottieAnimation.json */,
+				04F15E5C2A0F91FC007146DC /* RainBack.json */,
 				04194FD329D59B8900C757B2 /* Localizable.strings */,
 			);
 			path = Helpers;
@@ -78,6 +87,7 @@
 		04667CAC29C1D14D0086FC3E /* WeatherOK */ = {
 			isa = PBXGroup;
 			children = (
+				04209AD62A067B04008E819C /* Info.plist */,
 				04667CAD29C1D14D0086FC3E /* WeatherOKApp.swift */,
 				04667CAF29C1D14D0086FC3E /* ContentView.swift */,
 				046E50E329C715D6004C9656 /* LogoView.swift */,
@@ -113,6 +123,8 @@
 			dependencies = (
 			);
 			name = WeatherOK;
+			packageProductDependencies = (
+			);
 			productName = WeatherOK;
 			productReference = 04667CAA29C1D14D0086FC3E /* WeatherOK.app */;
 			productType = "com.apple.product-type.application";
@@ -142,6 +154,8 @@
 				uk,
 			);
 			mainGroup = 04667CA129C1D14D0086FC3E;
+			packageReferences = (
+			);
 			productRefGroup = 04667CAB29C1D14D0086FC3E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -156,6 +170,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F15E5D2A0F91FC007146DC /* RainBack.json in Resources */,
 				04667CB529C1D14E0086FC3E /* Preview Assets.xcassets in Resources */,
 				04667CB229C1D14E0086FC3E /* Assets.xcassets in Resources */,
 			);
@@ -175,6 +190,7 @@
 				04667CC529C1D3D90086FC3E /* GetWeatherModel.swift in Sources */,
 				04667CAE29C1D14D0086FC3E /* WeatherOKApp.swift in Sources */,
 				046BC23A29C48C4300EF8431 /* ResultWeatherView.swift in Sources */,
+				043AB5042A0FA57B009CD8FB /* LottieView.swift in Sources */,
 				04194FD129D59B8900C757B2 /* Localizable.strings in Sources */,
 				04667CC329C1D3190086FC3E /* GetLocation.swift in Sources */,
 			);
@@ -320,13 +336,15 @@
 				DEVELOPMENT_TEAM = 4395FH4L77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherOK/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WeatherOK;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use for show wheather in your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,9 +352,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.energy.WeatherOK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -351,13 +372,15 @@
 				DEVELOPMENT_TEAM = 4395FH4L77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherOK/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WeatherOK;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use for show wheather in your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,9 +388,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.energy.WeatherOK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
