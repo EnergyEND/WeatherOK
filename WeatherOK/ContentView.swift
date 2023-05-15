@@ -33,8 +33,10 @@ struct ContentView: View {
                     
                     //MARK: Background style:
                     if colorScheme == .light {
-                        Rectangle().fill(Color.blue.gradient).ignoresSafeArea()
-                        //LottieView(animationName: "lottieAnimation")
+                        ZStack {
+                            Rectangle().fill(Color.blue.gradient).ignoresSafeArea()
+                            Animations(name: "RainBack").frame(width: reader.size.width, height: reader.size.height)
+                        }
                     }else {
                         Rectangle().fill(Color("DarkBack").gradient).ignoresSafeArea()
                     }
