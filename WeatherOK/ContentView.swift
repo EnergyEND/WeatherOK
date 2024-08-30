@@ -35,7 +35,7 @@ struct ContentView: View {
                     if colorScheme == .light {
                         ZStack {
                             Rectangle().fill(Color.blue.gradient).ignoresSafeArea()
-                            Animations(name: "RainBack").frame(width: reader.size.width, height: reader.size.height)
+                           // Animations(name: "lottieAnimation").frame(width: reader.size.width, height: reader.size.height)
                         }
                     }else {
                         Rectangle().fill(Color("DarkBack").gradient).ignoresSafeArea()
@@ -45,7 +45,7 @@ struct ContentView: View {
                     //MARK: Location buttons block:
                     //Background:
                     Rectangle().fill(.ultraThickMaterial).cornerRadius(25)
-                        .offset(y: reader.size.height * 0.47)
+                        .offset(y: observer.textFieldIsPressed ? reader.size.height * 0.6 : reader.size.height * 0.47)
                         .frame(height: height)
                     
                     VStack {
@@ -74,6 +74,7 @@ struct ContentView: View {
                                 getHourlyWeather(for: result?.name ?? "Kyiv",isUkr: selectedLocale) { result in
                                     switch result {
                                     case .success(let result):
+                                        self.hourly = nil
                                         self.hourly = result
                                     case .failure(let error):
                                         print("Error: \(error.localizedDescription)")
@@ -91,7 +92,7 @@ struct ContentView: View {
                                             .foregroundColor(Color("ButtonText"))
                                             .font(.system(size: 23))
                                     }
-                                }
+                                }.opacity(observer.textFieldIsPressed ? 0 : 1)
                             }.disabled(observer.textFieldIsPressed)
                             
                             //City button:
@@ -119,14 +120,14 @@ struct ContentView: View {
                                             .foregroundColor(Color("ButtonText"))
                                             .font(.system(size: 20))
                                     }.offset(x: 10)
-                                }
+                                }.opacity(observer.textFieldIsPressed ? 0 : 1)
                             }.disabled(observer.textFieldIsPressed)
                         }
                      }.offset(y: reader.size.height * 0.44)
                     
                     
                     
-                    //MARK: Center info block:
+                    //MARK: Primary weather info block:
                     VStack {
                         if result != nil {
                             
@@ -166,12 +167,16 @@ struct ContentView: View {
                             getHourlyWeather(for: inputCity.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "Kyiv",isUkr: selectedLocale) { result in
                                 switch result {
                                 case .success(let result):
+                                   // print("result is: \(result.list.first?.main.temp)")
+                                    self.hourly = nil
                                     self.hourly = result
                                 case .failure(let error):
                                     print("Error: \(error.localizedDescription)")
                                 }
                             }
                             simpleSuccess()
+                            isCity.toggle()
+                            height = reader.size.height * 0.165 //test sim
                             
                         })
                             .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -193,9 +198,9 @@ struct ContentView: View {
                     
                     //MARK: Localization toggle:
                     HStack {
-                        Text("🇬🇧")
+                        Image("english").resizable().frame(width: 20, height: 20)
                         Toggle("",isOn: $selectedLocale).toggleStyle(SwitchToggleStyle(tint: .yellow)).labelsHidden()
-                        Text("🇺🇦")
+                        Image("ukrainian").resizable().frame(width: 20, height: 20)
                     }.frame(width: 120, height: 40 )
                         .background(.thinMaterial)
                         .cornerRadius(25)
@@ -208,6 +213,9 @@ struct ContentView: View {
         .onAppear{
             locationFetcher.start()
             prepareHaptics()
+        }
+        .onChange(of: self.hourly) { _ in
+            print("new hourly: \(hourly!.list.first!.main.temp) ")
         }
     }
     

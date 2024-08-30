@@ -72,8 +72,16 @@ struct HourlyData: Codable, Equatable {
 }
 
 //MARK: Hourly weather data list:
-struct HourlyWeather: Codable{
+struct HourlyWeather: Codable, Equatable{
     let list: [HourlyData]
+    
+    static func ==(lhs: HourlyWeather, rhs: HourlyWeather) -> Bool {
+            return lhs.list == rhs.list
+        }
+
+        static func !=(lhs: HourlyWeather, rhs: HourlyWeather) -> Bool {
+            return !(lhs == rhs)
+        }
 }
 
 //MARK: Current localization observer:

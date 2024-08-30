@@ -27,7 +27,8 @@ struct ResultWeatherView: View {
                         Image(colorScheme == .dark ? "locationPointLight" : "locationPointDark").resizable()
                             .frame(width: 30, height: 40)
                         Text(location!.name).font(.system(size: 55))
-                    }.onAppear{
+                    }.offset(y: 10)
+                    .onAppear{
                         tempColor = getTempTextColor()
                     }
                     
@@ -40,7 +41,7 @@ struct ResultWeatherView: View {
                         HStack {
                             Text("\(String(format: "%01.0f", location!.main.temp))").foregroundColor(tempColor)
                             Text("°C")
-                        }.font(.system(size: 35))
+                        }.font(.system(size: 50))
                             .padding(.bottom, 1)
                         HStack {
                             Text("min")

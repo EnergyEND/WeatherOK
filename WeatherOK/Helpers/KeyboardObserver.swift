@@ -29,7 +29,7 @@ class KeyboardObserver: ObservableObject {
 
     @objc func keyboardWillShow(notification: Notification) {
         guard notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] is CGRect else { return }
-        textOffset = 250 //160
+        textOffset = 320 //160
         textShadow = 30
         textOpacity = 0
         textFieldIsPressed = true
