@@ -4,12 +4,12 @@
 //
 //  Created by MAC on 13.05.2023.
 //
-
+/*
 import SwiftUI
 import Lottie
 
 struct Animations: UIViewRepresentable {
-    var name: String = "RainBack"
+    var name: String = "littieAnimation"
     let view = LottieAnimationView()
     
     func makeUIView(context: Context) -> some UIView {
@@ -37,3 +37,4 @@ struct Animations_Previews: PreviewProvider {
         Animations()
     }
 }
+*/

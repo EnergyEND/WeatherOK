@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		04194FD129D59B8900C757B2 /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = 04194FD329D59B8900C757B2 /* Localizable.strings */; };
-		0426E5382A0FAA6F00040DA0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0426E5372A0FAA6F00040DA0 /* Lottie */; };
 		0426E53A2A0FAA9A00040DA0 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426E5392A0FAA9A00040DA0 /* Animations.swift */; };
 		042B51C129CC60FE00263FD5 /* LocaleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B51C029CC60FE00263FD5 /* LocaleModifier.swift */; };
 		04667CAE29C1D14D0086FC3E /* WeatherOKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04667CAD29C1D14D0086FC3E /* WeatherOKApp.swift */; };
@@ -20,8 +19,6 @@
 		046BC23A29C48C4300EF8431 /* ResultWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BC23929C48C4300EF8431 /* ResultWeatherView.swift */; };
 		046E50E429C715D6004C9656 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E50E329C715D6004C9656 /* LogoView.swift */; };
 		046E50E629C71BA4004C9656 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E50E529C71BA4004C9656 /* KeyboardObserver.swift */; };
-		04A92D6A2A1239B800E823E6 /* GitTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A92D692A1239B800E823E6 /* GitTestView.swift */; };
-		04F15E5D2A0F91FC007146DC /* RainBack.json in Resources */ = {isa = PBXBuildFile; fileRef = 04F15E5C2A0F91FC007146DC /* RainBack.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +38,6 @@
 		046BC23929C48C4300EF8431 /* ResultWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWeatherView.swift; sourceTree = "<group>"; };
 		046E50E329C715D6004C9656 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		046E50E529C71BA4004C9656 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
-		04A92D692A1239B800E823E6 /* GitTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitTestView.swift; sourceTree = "<group>"; };
-		04F15E5C2A0F91FC007146DC /* RainBack.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = RainBack.json; path = ../../../../Downloads/RainBack.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0426E5382A0FAA6F00040DA0 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,7 +60,6 @@
 				042B51C029CC60FE00263FD5 /* LocaleModifier.swift */,
 				0426E5392A0FAA9A00040DA0 /* Animations.swift */,
 				044AC3B32A066DA400F3F452 /* lottieAnimation.json */,
-				04F15E5C2A0F91FC007146DC /* RainBack.json */,
 				04194FD329D59B8900C757B2 /* Localizable.strings */,
 			);
 			path = Helpers;
@@ -94,7 +87,6 @@
 				04209AD62A067B04008E819C /* Info.plist */,
 				04667CAD29C1D14D0086FC3E /* WeatherOKApp.swift */,
 				04667CAF29C1D14D0086FC3E /* ContentView.swift */,
-				04A92D692A1239B800E823E6 /* GitTestView.swift */,
 				046E50E329C715D6004C9656 /* LogoView.swift */,
 				046BC23929C48C4300EF8431 /* ResultWeatherView.swift */,
 				042B51C329CC614D00263FD5 /* Helpers */,
@@ -129,7 +121,6 @@
 			);
 			name = WeatherOK;
 			packageProductDependencies = (
-				0426E5372A0FAA6F00040DA0 /* Lottie */,
 			);
 			productName = WeatherOK;
 			productReference = 04667CAA29C1D14D0086FC3E /* WeatherOK.app */;
@@ -143,7 +134,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					04667CA929C1D14D0086FC3E = {
 						CreatedOnToolsVersion = 14.2;
@@ -177,7 +168,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F15E5D2A0F91FC007146DC /* RainBack.json in Resources */,
 				04667CB529C1D14E0086FC3E /* Preview Assets.xcassets in Resources */,
 				04667CB229C1D14E0086FC3E /* Assets.xcassets in Resources */,
 			);
@@ -191,7 +181,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04667CB029C1D14D0086FC3E /* ContentView.swift in Sources */,
-				04A92D6A2A1239B800E823E6 /* GitTestView.swift in Sources */,
 				042B51C129CC60FE00263FD5 /* LocaleModifier.swift in Sources */,
 				046E50E429C715D6004C9656 /* LogoView.swift in Sources */,
 				046E50E629C71BA4004C9656 /* KeyboardObserver.swift in Sources */,
@@ -223,6 +212,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -255,6 +245,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -283,6 +274,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -315,6 +307,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -438,14 +431,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0426E5372A0FAA6F00040DA0 /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0426E5362A0FAA6F00040DA0 /* XCRemoteSwiftPackageReference "lottie-spm" */;
-			productName = Lottie;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04667CA229C1D14D0086FC3E /* Project object */;
 }
